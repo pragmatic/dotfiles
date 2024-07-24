@@ -29,6 +29,8 @@ set pastetoggle=<F12>
 
 set fillchars=vert:│
 
+set diffopt+=vertical
+
 " Jump to the last position when reopening a file
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -47,11 +49,11 @@ map <F6> :StripWhitespace<CR>
 " noremap <F3> :set invnumber invrelativenumber<CR>
 noremap <F3> :set invnumber<CR>
 
-noremap * :norm .<CR>
+noremap > :norm .<CR>
 
 " osc52.vim {{{
 " Sends default register to terminal TTY using OSC 52 escape sequence
-function Osc52Yank()
+function! Osc52Yank()
     let buffer=system('base64 | tr -d "\n"', @0)
     let buffer='\033]52;c;'.buffer.'\033\'
     silent exe "!echo -ne ".shellescape(buffer).
@@ -60,7 +62,7 @@ endfunction
 
 " Like Osc52Yank, except send all the contents to a single line
 " TODO: Figure out how to do this more cleanly.
-function Osc52YankOneLine()
+function! Osc52YankOneLine()
   let @"=substitute(@", '\n', '', 'g')
   call Osc52Yank() | redraw!
 endfunction
@@ -92,9 +94,9 @@ colorscheme inatick
 
 if has("gui_running")
     if has("macunix")
-        set guifont=JetBrains\ Mono:h12
+        set guifont=Iosevka\ Fixed:h14
     else
-        set guifont=Meslo\ LG\ S:h11
+        set guifont=JetBrains\ Mono:h12
     endif
 
     set guioptions-=T
@@ -102,6 +104,10 @@ if has("gui_running")
     set lines=64
 
     set guicursor=a:block-Cursor-blinkwait500-blinkoff500-blinkon500
+
+    set fullscreen
+
+    set guioptions-=r " Removes right hand scroll bar
 
     " This sets the matched listchars characters (tabs and trailing whitespace)
     " highlight SpecialKey    term=reverse    cterm=reverse   ctermfg=254         ctermbg=black   gui=reverse         guifg=#E9E9E9   guibg=Black
@@ -128,14 +134,9 @@ Plug 'godlygeek/tabular'
 
 Plug 'tpope/vim-commentary'         " Comment stuff out
 
-Plug 'vim-syntastic/syntastic'      " Syntastic is a syntax checking plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+Plug 'dense-analysis/ale' " Check syntax asynchronously and fix files, with Language Server Protocol (LSP) support
+let g:ale_virtualtext_cursor = 'current'
+let g:ale_virtualtext_cursor = 'disabled'
 
 Plug 'tpope/vim-fugitive'           " Vim plugin for Git
 " Plug 'pearofducks/ansible-vim'      " A vim plugin for syntax highlighting Ansible's common filetypes
@@ -158,8 +159,6 @@ Plug 'vim-airline/vim-airline-themes'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "powerlineish"
-" let g:airline#extensions#tabline#enabled = 1
-
 
 Plug 'preservim/tagbar'                             " Vim plugin that displays tags in a window, ordered by scope
 let g:tagbar_autoshowtag = 1
@@ -191,7 +190,7 @@ nmap <F8> :TagbarToggle<CR>
 
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -201,8 +200,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'jgerry/terraform-vim-folding'
 
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter'
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Initialize plugin system
 call plug#end()
