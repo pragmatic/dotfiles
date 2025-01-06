@@ -49,7 +49,7 @@ map <F6> :StripWhitespace<CR>
 " noremap <F3> :set invnumber invrelativenumber<CR>
 noremap <F3> :set invnumber<CR>
 
-noremap > :norm .<CR>
+" noremap > :norm .<CR>
 
 " osc52.vim {{{
 " Sends default register to terminal TTY using OSC 52 escape sequence
@@ -94,7 +94,8 @@ colorscheme inatick
 
 if has("gui_running")
     if has("macunix")
-        set guifont=Iosevka\ Fixed:h14
+        " set guifont=Iosevka\ Fixed:h14
+        set guifont=IosevkaTerm\ Nerd\ Font:h14
     else
         set guifont=JetBrains\ Mono:h12
     endif
@@ -146,6 +147,7 @@ augroup ansible_vim_ftyaml_ansible
     autocmd BufRead,BufNewFile */plays_*/hosts          set filetype=ansible_hosts
     autocmd BufRead,BufNewFile */ansible/roles*/*.yml   set filetype=yaml.ansible
 augroup END
+Plug 'tpope/vim-rhubarb'           " rhubarb.vim: GitHub extension for fugitive.vim
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go development plugin for Vim
 
@@ -189,6 +191,10 @@ let g:tagbar_type_terraform = {
 nmap <F8> :TagbarToggle<CR>
 
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
@@ -198,7 +204,8 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'jgerry/terraform-vim-folding'
+" Plug 'jgerry/terraform-vim-folding'
+setlocal foldlevel=4
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
