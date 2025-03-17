@@ -205,12 +205,14 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Plug 'jgerry/terraform-vim-folding'
-setlocal foldlevel=4
+" set foldlevel=1
+" set foldlevelstart=1
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+Plug 'ggml-org/llama.vim'
 
 " Initialize plugin system
 call plug#end()
-
