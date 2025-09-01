@@ -41,6 +41,9 @@ endif
 
 """ FUNCTIONS
 
+noremap <C-a>z <c-w>_ \| <c-w>\|
+noremap <C-a>o <c-w>=
+
 " Removes trailing spaces
 map <F6> :StripWhitespace<CR>
 
@@ -151,6 +154,14 @@ Plug 'tpope/vim-rhubarb'           " rhubarb.vim: GitHub extension for fugitive.
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go development plugin for Vim
 
+Plug 'charlespascoe/vim-go-syntax'                  " Fast, 'tree-sitter'-like Vim Syntax Highlighting for Go
+let g:go_highlight_parens = 0
+let g:go_highlight_braces = 0
+let g:go_highlight_brackets = 0
+let g:go_highlight_dot = 0
+let g:go_highlight_parens = 0
+let g:go_highlight_parens = 0
+
 Plug 'vim-airline/vim-airline'                      " lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
 
@@ -202,7 +213,10 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'ntpeters/vim-better-whitespace'
 
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'preservim/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_space_guides = 0
+let g:indent_guides_auto_colors = 0
 
 " Plug 'jgerry/terraform-vim-folding'
 " set foldlevel=1
@@ -212,7 +226,9 @@ Plug 'nvim-treesitter/nvim-treesitter'
 
 " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+let g:llama_config = { 'endpoint': $LLAMA_ENDPOINT }
 Plug 'ggml-org/llama.vim'
 
+Plug 'christoomey/vim-system-copy'
 " Initialize plugin system
 call plug#end()
