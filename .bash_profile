@@ -93,7 +93,6 @@ fi
 
 # Initialize zoxide for smarter directory navigation
 eval "$(zoxide init bash)"
-alias cd=z  # Make cd use zoxide
 
 # COLOURS
 # Color definitions for prompt coloring based on day of week
