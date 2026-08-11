@@ -11,6 +11,7 @@ set smartcase   " case-sensitive if expresson contains a capital letter
 " turn hybrid line numbers on
 " set number norelativenumber
 set number
+set signcolumn=number
 
 set viminfo=!,'100,<1000,s200,h
 
@@ -47,10 +48,23 @@ noremap <C-a>o <c-w>=
 " Removes trailing spaces
 map <F6> :StripWhitespace<CR>
 
-" Toggle line numbers from none at all
-" to relative numbering with current line number
-" noremap <F3> :set invnumber invrelativenumber<CR>
-noremap <F3> :set invnumber<CR>
+" " Toggle line numbers from none at all
+" " to relative numbering with current line number
+" " noremap <F3> :set invnumber invrelativenumber<CR>
+" noremap <F3> :set invnumber<CR>
+
+function! ToggleGutter()
+    if &number
+        set nonumber
+        set signcolumn=no
+    else
+        set number
+        set signcolumn=number
+    endif
+endfunction
+
+" Map to a key of your choice (e.g., <F3>)
+nnoremap <F3> :call ToggleGutter()<CR>
 
 " noremap > :norm .<CR>
 
