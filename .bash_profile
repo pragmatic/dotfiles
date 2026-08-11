@@ -244,6 +244,17 @@ _ar_completions() {
 # Register completion function for ar command
 complete -F _ar_completions assume-role ar
 
+_awsume() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(awsume-autocomplete)
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _awsume awsume ar
+
 # Enhanced man page coloring (custom color definitions)
 man () {
     # Set terminal color capabilities for better man page formatting
@@ -261,7 +272,7 @@ man () {
 # Powerline-go binary location (for enhanced prompt)
 POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go"
 # Base modules to display in prompt (not including Kubernetes context)
-POWERLINE_GO_MODULES_BASE="aws,assume-role,ssh,cwd,dotenv,perms,git,exit"
+POWERLINE_GO_MODULES_BASE="awsume,ssh,cwd,dotenv,perms,git,exit"
 
 # Timer file for command execution duration tracking
 INTERACTIVE_BASHPID_TIMER="/tmp/${USER}.START.$$"
@@ -298,13 +309,16 @@ if [ "$TERM" != "linux" ] && [ -f "${HOMEBREW_PREFIX}/bin/powerline-go" ]; then
   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:${HOME}/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/path.bash.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.bash.inc'; fi
+
+# Added by LM Studio CLI (lms)
+PATH="${HOME}/.lmstudio/bin:$PATH"
+# End of LM Studio CLI section
+
+#AWSume alias to source the AWSume script
+alias awsume="source awsume"
+alias ar="source awsume"
