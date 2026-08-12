@@ -1,0 +1,36 @@
+[user]
+	email = pragmatic@inatick.com
+	name = Peter Hallam
+[fetch]
+	prune = true
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[alias]
+	st = status
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+[diff "ansible-vault"]
+	textconv = ansible-vault view
+[diff "sopsdiffer"]
+	; textconv = "sops --config /dev/null -d"
+	textconv = sops decrypt
+	cachetextconv = false
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	tool = vimdiff
+	noprefix = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
