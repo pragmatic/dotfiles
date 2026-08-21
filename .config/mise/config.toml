@@ -1,0 +1,24 @@
+[env]
+GROFF_NO_SGR = 1
+MCFLY_FUZZY = 4
+
+[shell_alias]
+cdr = "cd $(git rev-parse --show-toplevel)"
+
+[tools]
+"aqua:cantino/mcfly" = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
+doggo = "latest"
+fnox = "latest"
+gh = "latest"
+ghorg = "latest"
+"github:k1LoW/mo" = "latest"
+"github:legal90/awscurl" = "latest"
+"github:mikefarah/yq" = "latest"
+"github:starship/starship" = "latest"
+"github:terraform-docs/terraform-docs" = "latest"
+go = "latest"
+pipx = "latest"
+"pipx:awsume" = "latest"
+python = "latest"
+usage = "latest"
