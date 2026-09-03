@@ -1,3 +1,5 @@
+if [[ "${OSTYPE}" != "linux-gnu" ]]; then
+
 # Determine system architecture to set appropriate Homebrew prefix
 UNAME_MACHINE="$(/usr/bin/uname -m)"
 
@@ -62,6 +64,8 @@ PATH="/opt/homebrew/opt/ansible@9/bin:$PATH"
 [[ -r "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
 [[ -r "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 
+fi
+
 # Set AWS STS regional endpoints to use regional endpoints instead of global
 export AWS_STS_REGIONAL_ENDPOINTS="regional"
 
@@ -78,18 +82,25 @@ HISTCONTROL="ignoredups${HISTCONTROL:+:$HISTCONTROL}"
 HISTIGNORE="ls:ls -l:ls l:ls l-:ls -lart:la:tig:git st:git diff:git log:pwd:\:q:"
 # Set history size to unlimited (negative value)
 HISTSIZE=-1
-# HSTR configuration (history search tool)
-alias hh=hstr                    # hh to be alias for hstr
-export HSTR_CONFIG=raw-history-view,keywords-matching,hicolor # get more colors
-# Append new history items to .bash_history file
-shopt -s histappend
-# Ensure synchronization between bash memory and history file
-PROMPT_COMMAND="history -a; history -n${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
-# If this is an interactive shell, bind hstr to Ctrl-r and Ctrl-x k
-if [[ $- =~ .*i.* ]]; then
-    bind '"\C-r": "\C-a hstr -- \C-j"'  # bind hstr to Ctrl-r (for Vi mode check doc)
-    bind '"\C-xk": "\C-a hstr -k \C-j"' # bind 'kill last command' to Ctrl-x k
-fi
+# # HSTR configuration (history search tool)
+# alias hh=hstr                    # hh to be alias for hstr
+# export HSTR_CONFIG=raw-history-view,keywords-matching,hicolor # get more colors
+# # Append new history items to .bash_history file
+# shopt -s histappend
+# # Ensure synchronization between bash memory and history file
+# PROMPT_COMMAND="history -a; history -n${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+# function hstrnotiocsti {
+#     { READLINE_LINE="$( { </dev/tty hstr ${READLINE_LINE}; } 2>&1 1>&3 3>&- )"; } 3>&1;
+#     READLINE_POINT=${#READLINE_LINE}
+# }
+# # if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+# if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": "hstrnotiocsti"'; fi
+# export HSTR_TIOCSTI=n
+# # # If this is an interactive shell, bind hstr to Ctrl-r and Ctrl-x k
+# # if [[ $- =~ .*i.* ]]; then
+# #     bind '"\C-r": "\C-a hstr -- \C-j"'  # bind hstr to Ctrl-r (for Vi mode check doc)
+# #     bind '"\C-xk": "\C-a hstr -k \C-j"' # bind 'kill last command' to Ctrl-x k
+# # fi
 
 # Initialize zoxide for smarter directory navigation
 eval "$(zoxide init bash)"
@@ -255,24 +266,13 @@ _awsume() {
 }
 complete -F _awsume awsume ar
 
-# Enhanced man page coloring (custom color definitions)
-man () {
-    # Set terminal color capabilities for better man page formatting
-    LESS_TERMCAP_md=$'\e'"[38;5;75m" \
-    LESS_TERMCAP_me=$'\e'"[0m" \
-    LESS_TERMCAP_se=$'\e'"[0m" \
-    LESS_TERMCAP_so=$'\e'"[103;30m" \
-    LESS_TERMCAP_ue=$'\e'"[0m" \
-    LESS_TERMCAP_us=$'\e'"[1;37m" \
-    command man "$@"
-}
 
 # PROMPT SETUP
 
 # Powerline-go binary location (for enhanced prompt)
 POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go"
 # Base modules to display in prompt (not including Kubernetes context)
-POWERLINE_GO_MODULES_BASE="awsume,ssh,cwd,dotenv,perms,git,exit"
+POWERLINE_GO_MODULES_BASE="aws,ssh,cwd,dotenv,perms,git,exit"
 
 # Timer file for command execution duration tracking
 INTERACTIVE_BASHPID_TIMER="/tmp/${USER}.START.$$"
@@ -322,3 +322,12 @@ PATH="${HOME}/.lmstudio/bin:$PATH"
 #AWSume alias to source the AWSume script
 alias awsume="source awsume"
 alias ar="source awsume"
+
+eval "$(mise activate bash)"
+
+# Enable AWS CLI completion using mise's path
+if command -v aws_completer &>/dev/null; then
+  complete -C "$(command -v aws_completer)" aws
+fi
+
+eval "$(mcfly init bash)"

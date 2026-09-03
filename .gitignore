@@ -21,3 +21,14 @@ tags
 [._]*.un~
 
 .DS_Store
+
+*.tfplan
+
+errored.tfstate
+.terraform
+terraform.tfstate.backup
+terraform.tfstate.*.backup
+plan.tfplan
+plan.txt
+output.json
+*.log

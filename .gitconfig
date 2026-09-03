@@ -1,3 +1,5 @@
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
 [user]
 	email = pragmatic@inatick.com
 	name = Peter Hallam

@@ -12,6 +12,7 @@
 "apt:pre-commit" = "latest"
 "apt:python3-dev" = "latest"
 "apt:silversearcher-ag" = "latest"
+"apt:sqlite3" = "latest"
 "apt:tig" = "latest"
 "apt:tree" = "latest"
 "apt:ugrep" = "latest"
@@ -32,18 +33,21 @@ dotfiles.default_mode = "symlink"
  # "~/.config/nvim" = {}
 "~/.bash_profile" = {}
 "~/.config/lazygit/config.yml" = {}
-"~/.config/mise/config.yml" = {}
+"~/.config/mise/config.toml" = {}
 "~/.gitattributes" = {}
 "~/.gitconfig" = {}
 "~/.inputrc" = {}
 "~/.lesskey" = {}
 "~/.tigrc" = {}
 "~/.tmux.conf" = {}
+"~/.vim/autoload/plug.vim" = {}
 "~/.vim/colors/inatick.vim" = {}
 "~/.vimrc" = {}
 
-# [tasks.bootstrap]                      # anything else, with tools on PATH
-# description = "Install or update Vim plugins headlessly"
-# run = "vim --noplugin -u ~/.vimrc +PlugInstall +qall"
+[tasks.bootstrap]                      # Run with mise run bootstrap
+description = "Install or update Vim plugins headlessly"
+run = "vim --noplugin -u ~/.vimrc +PlugInstall +qall"
+
 [env]
 _.path = ["~/bin"]
+CLICOLOR = true

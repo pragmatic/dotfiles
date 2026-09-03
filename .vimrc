@@ -146,7 +146,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save=1
-let g:terraform_binary_path="tofu"
+let g:terraform_binary_path="terraform"
 
 Plug 'godlygeek/tabular'
 
@@ -240,9 +240,12 @@ Plug 'nvim-treesitter/nvim-treesitter'
 
 " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-let g:llama_config = { 'endpoint': $LLAMA_ENDPOINT }
+let g:llama_config = { 'endpoint_fim': $LLAMA_ENDPOINT }
 Plug 'ggml-org/llama.vim'
 
 Plug 'christoomey/vim-system-copy'
+
+Plug 'bullets-vim/bullets.vim'
+
 " Initialize plugin system
 call plug#end()
