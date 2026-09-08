@@ -17,9 +17,9 @@ export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
 # Add Homebrew bins to PATH
 export PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin${PATH+:$PATH}"
 # Add Homebrew man pages to MANPATH
-export MANPATH="${HOMEBREW_PREFIX}/share/man${MANPATH+:$MANPATH}:"
+export MANPATH="${HOMEBREW_PREFIX}/share/man${MANPATH+:$MANPATH}"
 # Add Homebrew info pages to INFOPATH
-export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}"
+export INFOPATH="${HOMEBREW_PREFIX}/share/info${INFOPATH+:$INFOPATH}"
 
 # Add personal bin directory to PATH
 PATH="$HOME/bin:$PATH"
@@ -51,7 +51,7 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Add Python to PATH (for development)
 PATH="${HOMEBREW_PREFIX}/opt/python@3.13/libexec/bin:$PATH"
 # Add Ansible to PATH (for automation)
-PATH="/opt/homebrew/opt/ansible@9/bin:$PATH"
+PATH="${HOMEBREW_PREFIX}/opt/ansible@9/bin:$PATH"
 
 # Load local custom configuration (if it exists)
 [[ -f "${HOME}/.bash_local" ]] && . "${HOME}/.bash_local"
@@ -136,6 +136,8 @@ case $OSTYPE in
         export HOMEBREW_NO_ANALYTICS=1
         # Disable Homebrew emojis (for better terminal compatibility)
         export HOMEBREW_NO_EMOJI=1
+        # Disable asking for confirmation before downloading and upgrading
+        export HOMEBREW_NO_ASK=1
         # Enable color output in terminal
         export CLICOLOR=true
         # Set vim as default editor (from Homebrew)
@@ -270,9 +272,9 @@ complete -F _awsume awsume ar
 # PROMPT SETUP
 
 # Powerline-go binary location (for enhanced prompt)
-POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go"
+POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go -colorize-hostname -hostname-only-if-ssh "
 # Base modules to display in prompt (not including Kubernetes context)
-POWERLINE_GO_MODULES_BASE="aws,ssh,cwd,dotenv,perms,git,exit"
+POWERLINE_GO_MODULES_BASE="awsume,ssh,host,cwd,dotenv,perms,git,exit"
 
 # Timer file for command execution duration tracking
 INTERACTIVE_BASHPID_TIMER="/tmp/${USER}.START.$$"
