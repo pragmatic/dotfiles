@@ -1,0 +1,25 @@
+[env]
+_.path = [
+    "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin", # Add coreutils to PATH (GNU versions)
+    "${HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin", # Add GNU sed to PATH (required for eks-creds TF bin script)
+    "${HOMEBREW_PREFIX/opt/findutils/libexec/gnubin", # Add findutils to PATH (GNU versions)
+    "$HOME/go/bin", # Add Go binary directory to PATH
+    "${HOMEBREW_PREFIX/opt/curl/bin", # Add curl from Homebrew to PATH (more recent version)
+    "/Applications/Docker.app/Contents/Resources/bin", # Add Docker CLI to PATH (macOS)
+    "${HOMEBREW_PREFIX/opt/openssl@1.1/bin", # Add OpenSSL 1.1 to PATH (required by some tools)
+
+    "${KREW_ROOT:-$HOME/.krew}/bin", # Add Krew (kubectl plugin manager) to PATH
+    "$HOMEBREW_PREFIX/opt/python@3.13/libexec/bin", # Add Python to PATH (for development)
+    "$HOMEBREW_PREFIX/opt/ansible@9/bin", # Add Ansible to PATH (for automation)
+]
+CLICOLOR = true # Enable color output in terminal
+EDITOR = "${HOMEBREW_PREFIX}/bin/vim" # Set vim as default editor (from Homebrew)
+HOMEBREW_NO_ANALYTICS = 1 # Disable Homebrew analytics (for privacy)
+HOMEBREW_NO_ASK = 1 # Disable asking for confirmation before downloading and upgrading
+HOMEBREW_NO_EMOJI = 1 # Disable Homebrew emojis (for better terminal compatibility)
+
+[shell_alias]
+grep = "grep --color=auto"          # Enable color output for grep command
+ls = "ls --color=auto"              # Enable color output for ls command
+vi = "vim"                          # Use vim as default editor
+ykman = "/Applications/YubiKey Manager.app/Contents/MacOS/ykman"  # YubiKey manager alias

@@ -21,37 +21,13 @@ export MANPATH="${HOMEBREW_PREFIX}/share/man${MANPATH+:$MANPATH}"
 # Add Homebrew info pages to INFOPATH
 export INFOPATH="${HOMEBREW_PREFIX}/share/info${INFOPATH+:$INFOPATH}"
 
-# Add personal bin directory to PATH
-PATH="$HOME/bin:$PATH"
-
-# Add coreutils to PATH (GNU versions)
-PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:$PATH"
-# Add GNU sed to PATH (required for eks-creds TF bin script)
-PATH="${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:$PATH"
-# Add findutils to PATH (GNU versions)
-PATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:$PATH"
-# Add Go binary directory to PATH
-PATH="$HOME/go/bin:$PATH"
-# Add curl from Homebrew to PATH (more recent version)
-PATH="${HOMEBREW_PREFIX}/opt/curl/bin:$PATH"
-
-# Add Docker CLI to PATH (macOS)
-PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
-# Add OpenSSL 1.1 to PATH (required by some tools)
-PATH="${HOMEBREW_PREFIX}/opt/openssl@1.1/bin:$PATH"
-
-# Add asdf to PATH (version manager)
-PATH="${HOMEBREW_PREFIX}/opt/asdf/bin:$PATH"
-# Add asdf shims to PATH (to use tools installed with asdf)
-PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-. <(asdf completion bash)
-# Add Krew (kubectl plugin manager) to PATH
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# Add Python to PATH (for development)
-PATH="${HOMEBREW_PREFIX}/opt/python@3.13/libexec/bin:$PATH"
-# Add Ansible to PATH (for automation)
-PATH="${HOMEBREW_PREFIX}/opt/ansible@9/bin:$PATH"
+# # Add asdf to PATH (version manager)
+# PATH="${HOMEBREW_PREFIX}/opt/asdf/bin:$PATH"
+# # Add asdf shims to PATH (to use tools installed with asdf)
+# PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# . <(asdf completion bash)
+# # Add Krew (kubectl plugin manager) to PATH
+# PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Load local custom configuration (if it exists)
 [[ -f "${HOME}/.bash_local" ]] && . "${HOME}/.bash_local"
@@ -82,25 +58,6 @@ HISTCONTROL="ignoredups${HISTCONTROL:+:$HISTCONTROL}"
 HISTIGNORE="ls:ls -l:ls l:ls l-:ls -lart:la:tig:git st:git diff:git log:pwd:\:q:"
 # Set history size to unlimited (negative value)
 HISTSIZE=-1
-# # HSTR configuration (history search tool)
-# alias hh=hstr                    # hh to be alias for hstr
-# export HSTR_CONFIG=raw-history-view,keywords-matching,hicolor # get more colors
-# # Append new history items to .bash_history file
-# shopt -s histappend
-# # Ensure synchronization between bash memory and history file
-# PROMPT_COMMAND="history -a; history -n${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
-# function hstrnotiocsti {
-#     { READLINE_LINE="$( { </dev/tty hstr ${READLINE_LINE}; } 2>&1 1>&3 3>&- )"; } 3>&1;
-#     READLINE_POINT=${#READLINE_LINE}
-# }
-# # if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
-# if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": "hstrnotiocsti"'; fi
-# export HSTR_TIOCSTI=n
-# # # If this is an interactive shell, bind hstr to Ctrl-r and Ctrl-x k
-# # if [[ $- =~ .*i.* ]]; then
-# #     bind '"\C-r": "\C-a hstr -- \C-j"'  # bind hstr to Ctrl-r (for Vi mode check doc)
-# #     bind '"\C-xk": "\C-a hstr -k \C-j"' # bind 'kill last command' to Ctrl-x k
-# # fi
 
 # Initialize zoxide for smarter directory navigation
 eval "$(zoxide init bash)"
@@ -132,26 +89,10 @@ COLOR_A="CLR_${THEME}_A" COLOR_B="CLR_${THEME}_B" COLOR_C="CLR_${THEME}_C"
 # macOS specific configurations
 case $OSTYPE in
     darwin* )
-        # Disable Homebrew analytics (for privacy)
-        export HOMEBREW_NO_ANALYTICS=1
-        # Disable Homebrew emojis (for better terminal compatibility)
-        export HOMEBREW_NO_EMOJI=1
-        # Disable asking for confirmation before downloading and upgrading
-        export HOMEBREW_NO_ASK=1
-        # Enable color output in terminal
-        export CLICOLOR=true
-        # Set vim as default editor (from Homebrew)
-        export EDITOR="${HOMEBREW_PREFIX}/bin/vim"
         # Increase file descriptor limit (for better performance)
         ulimit -n 1024
         ;;
 esac
-
-# ALIASES
-alias ls="ls --color=auto"              # Enable color output for ls command
-alias vi="vim"                          # Use vim as default editor
-alias ykman="/Applications/YubiKey\ Manager.app/Contents/MacOS/ykman"  # YubiKey manager alias
-alias grep="grep --color=auto"          # Enable color output for grep command
 
 # FUNCTIONS
 

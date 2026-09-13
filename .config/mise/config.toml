@@ -32,6 +32,9 @@
 "~/.bash_profile" = {}
 "~/.config/lazygit/config.yml" = {}
 "~/.config/mise/config.linux.toml" = {}
+"~/.config/mise/config.macos-arm64.toml" = {}
+"~/.config/mise/config.macos-x64.toml" = {}
+"~/.config/mise/config.macos.toml" = {}
 "~/.config/mise/config.toml" = {}
 "~/.config/mise/miserc.toml" = {}
 "~/.gitattributes" = {}
@@ -45,6 +48,7 @@
 "~/.vimrc" = {}
 
 [env]
+_.path = ["~/bin"]
 CLICOLOR = true
 GROFF_NO_SGR = 1
 MCFLY_FUZZY = 3
