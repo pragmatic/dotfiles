@@ -1,3 +1,6 @@
+[env]
+POWERLINE_GO_MODULES_BASE = "aws,ssh,host,cwd,dotenv,perms,git,exit"
+
 [shell_alias]
 # Specific alias override for linux x64
 tofu = "terraform"

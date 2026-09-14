@@ -213,7 +213,7 @@ complete -F _awsume awsume ar
 # PROMPT SETUP
 
 # Powerline-go binary location (for enhanced prompt)
-POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go -colorize-hostname -hostname-only-if-ssh "
+POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go"
 # Base modules to display in prompt (not including Kubernetes context)
 POWERLINE_GO_MODULES_BASE="awsume,ssh,host,cwd,dotenv,perms,git,exit"
 
@@ -244,7 +244,7 @@ function _update_ps1() {
   fi
 
   # Update PS1 with powerline-go prompt
-  PS1="$(${POWERLINE_GO} -modules ${POWERLINE_GO_MODULES} -duration $__DURATION -error $__ERRCODE -shell bash -shorten-eks-names -shorten-gke-names -condensed -mode patched -modules-right duration)"
+  PS1="$(${POWERLINE_GO} -colorize-hostname -hostname-only-if-ssh -modules ${POWERLINE_GO_MODULES} -duration $__DURATION -error $__ERRCODE -shell bash -shorten-eks-names -shorten-gke-names -condensed -mode patched -modules-right duration)"
 }
 
 # Initialize powerline-go prompt if available and not in Linux terminal

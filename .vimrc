@@ -42,16 +42,27 @@ endif
 
 """ FUNCTIONS
 
-noremap <C-a>z <c-w>_ \| <c-w>\|
-noremap <C-a>o <c-w>=
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+
+command! ZoomToggle call s:ZoomToggle()
+
+" noremap <silent> <Leader>z :ZoomToggle<CR>
+noremap <silent> <C-a>z :ZoomToggle<CR>
+
 
 " Removes trailing spaces
 map <F6> :StripWhitespace<CR>
-
-" " Toggle line numbers from none at all
-" " to relative numbering with current line number
-" " noremap <F3> :set invnumber invrelativenumber<CR>
-" noremap <F3> :set invnumber<CR>
 
 function! ToggleGutter()
     if &number
@@ -97,13 +108,6 @@ augroup Vimrc
   autocmd! bufwritepost .vimrc source %
 augroup END
 
-" " Automatic toggling between 'hybrid' and absolute line numbers
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
-" augroup END
-
 
 """ COLOURS
 
@@ -142,6 +146,7 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+" let g:polyglot_disabled = ['terraform']
 Plug 'sheerun/vim-polyglot'
 
 " Plug 'hashivim/vim-terraform'
@@ -238,14 +243,12 @@ let g:indent_guides_auto_colors = 0
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-let g:llama_config = { 'endpoint_fim': $LLAMA_ENDPOINT }
-Plug 'ggml-org/llama.vim'
-
 Plug 'christoomey/vim-system-copy'
 
 Plug 'bullets-vim/bullets.vim'
+
+" Plug 'rishi-opensource/vim-claude-code'
+
 
 " Initialize plugin system
 call plug#end()
