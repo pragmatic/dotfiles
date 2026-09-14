@@ -61,6 +61,8 @@ dotfiles.default_mode = "symlink"
 
 [shell_alias]
 cdr = "cd $(git rev-parse --show-toplevel)"
+grep = "grep --color=auto"          # Enable color output for grep command
+ls = "ls --color=auto"              # Enable color output for ls command
 
 [tasks.bootstrap]                      # Run with mise run bootstrap
 description = "Install or update Vim plugins headlessly"
