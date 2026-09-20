@@ -48,6 +48,7 @@ export AWS_STS_REGIONAL_ENDPOINTS="regional"
 # Enable GKE GCLOUD AUTH plugin for Kubernetes cluster authentication
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
+eval "$(hstr --show-bash-configuration)"
 # Set history format to include timestamps (YYYY-MM-DD HH:MM:SS)
 HISTTIMEFORMAT="%F %T "
 # Configure history control to ignore space-prefixed commands
@@ -272,5 +273,3 @@ eval "$(mise activate bash)"
 if command -v aws_completer &>/dev/null; then
   complete -C "$(command -v aws_completer)" aws
 fi
-
-eval "$(mcfly init bash)"
