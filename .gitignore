@@ -32,3 +32,6 @@ plan.tfplan
 plan.txt
 output.json
 *.log
+
+*.pyc
+__pycache__/
