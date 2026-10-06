@@ -1,3 +1,60 @@
+[bootstrap.packages]
+"brew:awscli" = "latest"
+"brew:bash" = "latest"
+"brew:bash-completion@2" = "latest"
+"brew:btop" = "latest"
+"brew:cmake" = "latest"
+"brew:coreutils" = "latest"
+"brew:ctags" = "latest"
+"brew:dateutils" = "latest"
+"brew:doggo" = "latest"
+"brew:dos2unix" = "latest"
+"brew:fzf" = "latest"
+"brew:gdu" = "latest"
+"brew:gh" = "latest"
+"brew:ghorg" = "latest"
+"brew:git" = "latest"
+"brew:git-filter-repo" = "latest"
+"brew:git-open" = "latest"
+"brew:gnu-sed" = "latest"
+"brew:go" = "latest"
+"brew:go-jsonnet" = "latest"
+"brew:granted" = "latest"
+"brew:hstr" = "latest"
+"brew:htop" = "latest"
+"brew:ipcalc" = "latest"
+"brew:iperf3" = "latest"
+"brew:jq" = "latest"
+"brew:jsonnet-bundler" = "latest"
+"brew:k9s" = "latest"
+"brew:kubie" = "latest"
+"brew:lazygit" = "latest"
+"brew:llama.cpp" = "latest"
+"brew:make" = "latest"
+"brew:mise" = "latest"
+"brew:mkdocs" = "latest"
+"brew:multi-git-status" = "latest"
+"brew:neovim" = "latest"
+"brew:packer" = "latest"
+"brew:par" = "latest"
+"brew:pluto" = "latest"
+"brew:powerline-go" = "latest"
+"brew:sane-backends" = "latest"
+"brew:skopeo" = "latest"
+"brew:sops" = "latest"
+"brew:tcptraceroute" = "latest"
+"brew:terraform-docs" = "latest"
+"brew:the_silver_searcher" = "latest"
+"brew:tig" = "latest"
+"brew:tmux-xpanes" = "latest"
+"brew:tree" = "latest"
+"brew:trippy" = "latest"
+"brew:ugrep" = "latest"
+"brew:uv" = "latest"
+"brew:watch" = "latest"
+"brew:yq" = "latest"
+"brew:zoxide" = "latest"
+
 [env]
 _.path = [
     "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin", # Add coreutils to PATH (GNU versions)
@@ -7,6 +64,7 @@ _.path = [
     "${HOMEBREW_PREFIX/opt/curl/bin", # Add curl from Homebrew to PATH (more recent version)
     "/Applications/Docker.app/Contents/Resources/bin", # Add Docker CLI to PATH (macOS)
     "${HOMEBREW_PREFIX/opt/openssl@1.1/bin", # Add OpenSSL 1.1 to PATH (required by some tools)
+    "${HOMEBREW_PREFIX}/opt/make/libexec/gnubin", # Add GNU make to PATH
 
     "${KREW_ROOT:-$HOME/.krew}/bin", # Add Krew (kubectl plugin manager) to PATH
     "$HOMEBREW_PREFIX/opt/python@3.13/libexec/bin", # Add Python to PATH (for development)
@@ -17,7 +75,11 @@ EDITOR = "${HOMEBREW_PREFIX}/bin/vim" # Set vim as default editor (from Homebrew
 HOMEBREW_NO_ANALYTICS = 1 # Disable Homebrew analytics (for privacy)
 HOMEBREW_NO_ASK = 1 # Disable asking for confirmation before downloading and upgrading
 HOMEBREW_NO_EMOJI = 1 # Disable Homebrew emojis (for better terminal compatibility)
+POWERLINE_GO_MODULES_BASE = "ssh,host,aws,cwd,dotenv,perms,git,exit"
 
 [shell_alias]
 vi = "vim"                          # Use vim as default editor
 ykman = "/Applications/YubiKey Manager.app/Contents/MacOS/ykman"  # YubiKey manager alias
+
+[tools]
+bitwarden = "latest"

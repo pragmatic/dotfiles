@@ -13,6 +13,7 @@
 "~/.config/mise/miserc.toml" = {}
 "~/.gitattributes" = {}
 "~/.gitconfig" = {}
+"~/.gitignore" = {}
 "~/.inputrc" = {}
 "~/.lesskey" = {}
 "~/.tigrc" = {}
