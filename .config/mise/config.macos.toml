@@ -35,7 +35,6 @@
 "brew:mkdocs" = "latest"
 "brew:multi-git-status" = "latest"
 "brew:neovim" = "latest"
-"brew:packer" = "latest"
 "brew:par" = "latest"
 "brew:pluto" = "latest"
 "brew:powerline-go" = "latest"
@@ -83,3 +82,4 @@ ykman = "/Applications/YubiKey Manager.app/Contents/MacOS/ykman"  # YubiKey mana
 
 [tools]
 bitwarden = "latest"
+packer = "latest"
