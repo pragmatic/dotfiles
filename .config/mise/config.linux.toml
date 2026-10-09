@@ -11,6 +11,7 @@
 "apt:lazygit" = "latest"
 "apt:libsecret-1-0" = "latest"
 "apt:libsecret-1-dev" = "latest"
+"apt:libnss-mdns" = "latest"
 "apt:mgitstatus" = "latest"
 "apt:ncal" = "latest"
 "apt:powerline-go" = "latest"
