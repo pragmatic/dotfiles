@@ -47,7 +47,7 @@ hi perlSubname                                  ctermfg=2                       
 
 " hi SpecialKey   term=bold                                                               guifg=#492EE1
 hi NonText      term=bold                                               gui=bold        guifg=#5F87D7
-hi Directory    term=bold                                                               guifg=#5F87D7
+hi Directory    term=bold                       ctermfg=68                              guifg=#5F87D7
 hi! link SpecialKey Directory
 
 hi CursorLine                                   ctermfg=0   ctermbg=6   gui=bold        guifg=#070F19   guibg=#33BBC8

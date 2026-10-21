@@ -223,6 +223,14 @@ Plug 'PhilRunninger/nerdtree-buffer-ops'
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 
+" Make sure this is NOT set to 0. Remove it or set it to 1:
+let g:NERDTreeHijackNetrw = 1
+
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'christoomey/vim-tmux-navigator'
