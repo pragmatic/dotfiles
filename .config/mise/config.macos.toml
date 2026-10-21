@@ -94,7 +94,6 @@ EDITOR = "${HOMEBREW_PREFIX}/bin/vim" # Set vim as default editor (from Homebrew
 HOMEBREW_NO_ANALYTICS = 1 # Disable Homebrew analytics (for privacy)
 HOMEBREW_NO_ASK = 1 # Disable asking for confirmation before downloading and upgrading
 HOMEBREW_NO_EMOJI = 1 # Disable Homebrew emojis (for better terminal compatibility)
-POWERLINE_GO_MODULES_BASE = "ssh,host,aws,cwd,dotenv,perms,git,exit"
 
 [shell_alias]
 vi = "vim"                          # Use vim as default editor

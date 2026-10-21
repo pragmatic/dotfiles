@@ -158,7 +158,6 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'         " Comment stuff out
 
 Plug 'dense-analysis/ale' " Check syntax asynchronously and fix files, with Language Server Protocol (LSP) support
-let g:ale_virtualtext_cursor = 'current'
 let g:ale_virtualtext_cursor = 'disabled'
 
 Plug 'tpope/vim-fugitive'           " Vim plugin for Git
@@ -178,8 +177,6 @@ let g:go_highlight_parens = 0
 let g:go_highlight_braces = 0
 let g:go_highlight_brackets = 0
 let g:go_highlight_dot = 0
-let g:go_highlight_parens = 0
-let g:go_highlight_parens = 0
 
 Plug 'vim-airline/vim-airline'                      " lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
@@ -246,9 +243,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-system-copy'
 
 Plug 'bullets-vim/bullets.vim'
-
-" Plug 'rishi-opensource/vim-claude-code'
-
 
 " Initialize plugin system
 call plug#end()
