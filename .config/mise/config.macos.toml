@@ -19,7 +19,6 @@
 "brew-cask:vlc" = "latest"
 "brew-cask:winbox" = "latest"
 "brew-cask:yubico-authenticator" = "latest"
-"brew:awscli" = "latest"
 "brew:bash" = "latest"
 "brew:bash-completion@2" = "latest"
 "brew:btop" = "latest"
