@@ -49,3 +49,5 @@ mise/*.local.toml
 # https://mise.jdx.dev/dev-tools/mise-lock.html#environment-specific-lockfiles
 mise.local.lock
 mise.*.local.lock
+
+**/.claude/settings.local.json
