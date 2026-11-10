@@ -1,0 +1,8 @@
+DefaultBrowser = "STDOUT"
+CustomBrowserPath = ""
+CustomSSOBrowserPath = ""
+Ordering = ""
+CredentialProcessAutoLogin = true
+
+[Keyring]
+  Backend = "file"

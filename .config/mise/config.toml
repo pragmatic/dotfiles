@@ -14,10 +14,13 @@
 "~/.gitattributes" = {}
 "~/.gitconfig" = {}
 "~/.gitignore" = {}
+"~/.granted/config" = {}
 "~/.inputrc" = {}
 "~/.lesskey" = {}
+"~/.terraformrc" = {}
 "~/.tigrc" = {}
 "~/.tmux.conf" = {}
+"~/.tofurc" = {}
 "~/.vim/autoload/plug.vim" = {}
 "~/.vim/colors/inatick.vim" = {}
 "~/.vimrc" = {}
