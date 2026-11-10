@@ -23,7 +23,7 @@
 "~/.vimrc" = {}
 
 [env]
-_.path = ["~/bin"]
+_.path = ["~/bin","~/.local/bin"]
 CLICOLOR = true
 GROFF_NO_SGR = 1
 MCFLY_FUZZY = 3
@@ -42,21 +42,32 @@ description = "Install or update Vim plugins headlessly"
 run = "vim --noplugin -u ~/.vimrc +PlugInstall +qall"
 
 [tools]
+"aqua:aws/session-manager-plugin" = "latest"
 "aqua:cantino/mcfly" = "latest"
 "github:k1LoW/mo" = "latest"
 "github:legal90/awscurl" = "latest"
 "github:mikefarah/yq" = "latest"
 "github:starship/starship" = "latest"
 "github:terraform-docs/terraform-docs" = "latest"
+"npm:@d3lm/pr-stats" = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
+betterleaks = "latest"
+bun = "latest"
 claude-code = "latest"
 doggo = "latest"
+e1s = "latest"
+ffmpeg = "latest"
 fnox = "latest"
 gh = "latest"
 ghorg = "latest"
 go = "latest"
+goreleaser = "latest"
+node = "latest"
+npm = "latest"
+opentofu = "1.13.2"
 pipx = "latest"
 pre-commit = "latest"
 python = "latest"
+tflint = "latest"
 usage = "latest"
-ffmpeg = "latest"
+yq = "latest"
