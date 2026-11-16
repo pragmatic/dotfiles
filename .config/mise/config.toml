@@ -45,32 +45,55 @@ description = "Install or update Vim plugins headlessly"
 run = "vim --noplugin -u ~/.vimrc +PlugInstall +qall"
 
 [tools]
-"aqua:aws/session-manager-plugin" = "latest"
-"aqua:cantino/mcfly" = "latest"
-"github:k1LoW/mo" = "latest"
-"github:legal90/awscurl" = "latest"
-"github:mikefarah/yq" = "latest"
-"github:starship/starship" = "latest"
-"github:terraform-docs/terraform-docs" = "latest"
-"npm:@d3lm/pr-stats" = "latest"
-aws-cli = { version = "latest", symlink_bins = "true" }
-betterleaks = "latest"
+# Languages, Runtimes & Package Managers
 bun = "latest"
-claude-code = "latest"
-doggo = "latest"
-e1s = "latest"
-ffmpeg = "latest"
-fnox = "latest"
-gh = "latest"
-ghorg = "latest"
 go = "latest"
-goreleaser = "latest"
 node = "latest"
 npm = "latest"
-opentofu = "1.13.2"
 pipx = "latest"
-pre-commit = "latest"
 python = "latest"
+uv = "latest"
+
+# Cloud, Infrastructure as Code & Secrets
+"github:legal90/awscurl" = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
+e1s = "latest"
+fnox = "latest"
+granted = "latest"
+opentofu = "1.13.9"
+sops = "latest"
+terraform-docs = "latest"
 tflint = "latest"
+
+# Containers & Kubernetes
+k9s = "latest"
+kubie = "latest"
+pluto = "latest"
+
+# Git, GitHub & Code Review
+"npm:@d3lm/pr-stats" = "latest"
+gh = "latest"
+ghorg = "latest"
+lazygit = "latest"
+pre-commit = "latest"
+
+# Security, Linting & Release Engineering
+betterleaks = "latest"
+goreleaser = "latest"
+shellcheck = "latest"
 usage = "latest"
+
+# AI & Documentation
+"github:k1LoW/mo" = "latest"
+"pipx:mkdocs" = "latest"
+claude-code = "latest"
+
+# Shell, Prompt, Navigation & Text Processing
+fzf = "latest"
+neovim = "latest"
 yq = "latest"
+zoxide = "latest"
+
+# System & Networking
+doggo = "latest"
+gdu = "latest"
