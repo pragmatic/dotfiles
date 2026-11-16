@@ -91,6 +91,7 @@ claude-code = "latest"
 # Shell, Prompt, Navigation & Text Processing
 fzf = "latest"
 neovim = "latest"
+powerline-go = "latest"
 yq = "latest"
 zoxide = "latest"
 

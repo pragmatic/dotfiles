@@ -60,9 +60,6 @@ HISTIGNORE="ls:ls -l:ls l:ls l-:ls -lart:la:tig:git st:git diff:git log:pwd:\:q:
 # Set history size to unlimited (negative value)
 HISTSIZE=-1
 
-# Initialize zoxide for smarter directory navigation
-eval "$(zoxide init bash)"
-
 # COLOURS
 # Color definitions for prompt coloring based on day of week
 # CLR_1_A="38;5;3;1"      CLR_1_B="38;5;11"   CLR_1_C="38;5;100"  # Yellow
@@ -211,10 +208,12 @@ _awsume() {
 complete -F _awsume awsume ar
 
 
+eval "$(mise activate bash)"
+
 # PROMPT SETUP
 
 # Powerline-go binary location (for enhanced prompt)
-POWERLINE_GO="${HOMEBREW_PREFIX}/bin/powerline-go"
+POWERLINE_GO="powerline-go"
 # Base modules to display in prompt (not including Kubernetes context)
 POWERLINE_GO_MODULES_BASE="ssh,host,aws,cwd,dotenv,perms,git,exit,duration"
 
@@ -249,7 +248,7 @@ function _update_ps1() {
 }
 
 # Initialize powerline-go prompt if available and not in Linux terminal
-if [ "$TERM" != "linux" ] && [ -f "${HOMEBREW_PREFIX}/bin/powerline-go" ]; then
+if [ "$TERM" != "linux" ]; then
   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
@@ -267,7 +266,8 @@ PATH="${HOME}/.lmstudio/bin:$PATH"
 alias awsume="source awsume"
 alias ar="source awsume"
 
-eval "$(mise activate bash)"
+# Initialize zoxide for smarter directory navigation
+eval "$(zoxide init bash)"
 
 # Enable AWS CLI completion using mise's path
 if command -v aws_completer &>/dev/null; then
