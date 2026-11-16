@@ -55,6 +55,7 @@ python = "latest"
 uv = "latest"
 
 # Cloud, Infrastructure as Code & Secrets
+"aqua:aws/session-manager-plugin" = "latest"
 "github:legal90/awscurl" = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 e1s = "latest"

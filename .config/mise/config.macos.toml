@@ -1,7 +1,6 @@
 [bootstrap.packages]
 # Cloud, Containers & Secrets
 "brew-cask:docker-desktop" = "latest"
-"brew-cask:session-manager-plugin" = "latest"
 "brew:skopeo" = "latest"
 
 # Git & Code Review
