@@ -55,9 +55,18 @@ python = "latest"
 uv = "latest"
 
 # Cloud, Infrastructure as Code & Secrets
-"aqua:aws/session-manager-plugin" = "latest"
-"github:legal90/awscurl" = "latest"
-aws-cli = { version = "latest", symlink_bins = "true" }
+aws-cli = { version = "latest", symlink_bins = "true", postinstall = """
+if [ "$(uname -s)" = "Linux" ]; then
+  ARCH=$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo "64bit")
+  TMP=$(mktemp -d)
+  curl -fsSL "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_${ARCH}/session-manager-plugin.deb" -o "$TMP/ssm.deb"
+  ar p "$TMP/ssm.deb" data.tar.gz | tar -xz -C "$TMP"
+  AWS_BIN_DIR=$(dirname "$(find "$MISE_TOOL_INSTALL_PATH" -type l -name aws | head -n 1)")
+  cp "$TMP/usr/local/sessionmanagerplugin/bin/session-manager-plugin" "$AWS_BIN_DIR/session-manager-plugin"
+  chmod +x "$AWS_BIN_DIR/session-manager-plugin"
+  rm -rf "$TMP"
+fi
+""" }
 e1s = "latest"
 fnox = "latest"
 granted = "latest"

@@ -27,7 +27,7 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [color "diff"]
-    meta = bold
+    meta = white bold
     frag = cyan
     old = red
     new = green
